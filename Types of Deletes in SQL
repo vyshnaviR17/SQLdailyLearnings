@@ -1,7 +1,7 @@
 There are 3 types of DELETEs in SQL.
 (1)DELETE: With the help of DELETE we can delete one or more records in a table.We can't delete columns or tables with DELETE command.
 SYNTAX: DELETE FROM <TABLENAME>; (this query empties the table)
-Or We can specify some condition in the where clause for specific deletion of teh reocrds
+Or We can specify some condition in the where clause for specific deletion of reocrds
         DELETE FROM <TABLENAME> WHERE <CONDIITON>;
 (2)DROP: With the help of DROP we can delete columns or a whole table itself including column or table's data.Complete table structure will be deleted(helps in 
 freeing up the space).We cant delete reocrds individually.
@@ -9,3 +9,9 @@ SYNTAX: For dropping a table =  DROP TABLE <TABLENAME>;
         For dropping a column = ALTER TABLE <TABLENAME> DROP COLUMN <COLUMNNAME>;
 (3)TRUNCATE: With the help of TRUNCATE we can delete all of the table's data, but the structure will be preserved.
 SYNTAX: TRUNCATE TABLE <TABLENAME>;
+
+
+DELETE vs TRUNCATE
+(*)DELETE is a Data Manipulation Language command. TRUNCATE is a Data Definition Language command.
+(*)DELETE command doesn't free up the space IMMEDIATELY and is relatively slower compared to TRUNCATE command. It is because the DELETE command deletes the rows and
+it will write the data at row level into transaction log. While TRUNCATE command deletes records page by page and makes it faster in freeing up the space.

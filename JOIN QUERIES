@@ -1,1 +1,35 @@
-SELECT * FROM EMP;
+1.Write a query to retrieve the first name, last name, and department name of employees along with their corresponding department information. Use the "employees" and "departments" tables.
+
+SELECT e.first_name, e.last_name, d.department_name 
+FROM Employees e
+INNER JOIN Departments d
+ON e.department_id = d.department_id;
+
+2.Retrieve a list of all departments and their managers (if available). Include department name and manager's first name and last name. Use the "departments" and "employees" tables.
+
+SELECT d.department_id, d.department_name, m.Manager_id, m.Manager_fname, m.Manager_lname 
+FROM Departments d LEFT OUTER JOIN 
+Employees e
+ON e.department_id = d.department_id; 
+
+3.List all employees and their corresponding job titles, including those who don't have assigned job titles. Display first name, last name, and job title. Use the "employees" and "jobs" tables.
+
+SELECT e.first_name, e.last_name, j.job_title 
+FROM Employees e LEFT OUTER JOIN
+Jobs j
+ON e.job_id = j.job_id;
+
+4.Retrieve a list of employees and their assigned projects. Include first name, last name, and project name. Ensure that even employees without assigned projects are displayed. Use the "employees" and "projects" tables.
+
+SELECT e.first_name, e.last_name, p.project_name 
+FROM Employees e
+LEFT OUTER JOIN
+Projects p
+ON e.project_id = p.project_id 
+
+5.Write a query to find employees who have the same manager. Display the first name, last name, and manager name (first name and last name) for each pair of employees. Use the "employees" table. 
+
+SELECT e1.first_name, e1.last_name,e2.first_name, e2.last_name, m.first_name, m.last_name
+FROM Employees e1
+JOIN Employees e2 ON e1.manager_id = e2.manager_id AND e1.employee_id <>e2.employee_id
+JOIN Employees m ON e.manager_id = m.employee_id;

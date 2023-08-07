@@ -1,0 +1,112 @@
+BASIC SQL QUERIES
+-----------------
+(#)Write a query to retrieve the names of all employees from the "employees" table.
+
+SELECT Ename FROM Employees;
+
+(#)Retrieve the total number of employees in the "employees" table.
+
+SELECT COUNT(*) FROM Employees;
+
+(#)Display the first name, last name, and salary of employees whose salary is greater than $5000.
+
+SELECT first_name, last_name,sal FROM Employees WHERE Sal >5000
+
+(#)List the department names along with the total number of employees in each department.
+
+SELECT Dept_name, COUNT(*) FROM Employees
+GROUP BY Dept_name;
+
+(#)Retrieve the highest salary from the "employees" table.
+
+SELECT MAX(SAL) FROM Employees WHERE SAL > (SELECT MAX(SAL) FROM Employees); 
+
+
+(#)Write a SQL query to retrieve all columns from the "Employees" table where the department is 'IT'
+
+SELECT * FROM Employees
+WHERE department = 'IT';
+
+(#)Calculate the average salary of employees in the department number 10
+
+SQL> select avg(sal) from emp where deptno = 10;
+
+SQL> select avg(sal) from emp group by deptno having deptno = 10;
+
+--WHERE clause is used to filter the rows that are included in the aggregation.
+
+(#)Select customers with the same first name based on their age count.
+
+SELECT first_name, COUNT(AGE) AS CNT
+FROM Customers
+GROUP BY first_name
+HAVING COUNT(AGE) > 1;
+
+(#)Select the count of customer id's greater than one and their corresponding country
+
+--count of customer ids (>1)
+--country
+
+SELECT COUNTRY, COUNT(CUSTOMER_ID) AS CNT
+FROM Customers
+GROUP BY COUNTRY
+HAVING COUNT(CUSTOMER_ID) > 1;
+
+
+(#)Suppose you have a table named "Orders" with the following columns: order_id, customer_id, and order_total. You want to find the average order total for each customer who has placed orders with a total greater than 1000.
+
+SELECT Customer_id, AVG(order_total)
+FROM Orders
+WHERE order_total > 1000
+GROUP BY customer_id
+
+--HAVING clause filters the results of grouping and aggregation operations.
+--WHERE clause filters the rows before any grouping and aggregation occurs.
+
+(#)Update the salary of an employee with ID 101 to 60000 in Employees table.
+
+UPDATE Employee SET Sal = 60000 WHERE ID = 101;
+
+
+(#)Retrieve the names of employees who work in the "IT" department and have a salary greater than 50000.
+
+SELECT Ename
+FROM Employees
+WHERE Department = 'IT' AND Sal > 50000;
+
+
+(#)Display the names of employees who do not have a manager.
+
+SELECT Ename
+FROM Employees
+WHERE Manager_id IS NULL;
+
+(#)List the employees who joined the company in the year 2022
+
+SELECT Ename
+FROM Employees
+WHERE EXTRACT(YEAR FROM HIREDATE) = 2022;  
+
+(#)Retrieve the names of employees in descending order of their salaries.
+
+SELECT Ename FROM Employees
+ORDER BY Sal DESC;
+
+(#)Display the count of employees in each department.
+
+SELECT Deptno, COUNT(*) AS CNT
+FROM Employees
+GROUP BY DEPTNO;
+
+(#)List the names of employees who have a salary greater than the average salary of the company.
+
+SELECT Ename
+FROM Employees
+WHERE Sal > (SELECT AVG(Sal) FROM Employees);
+
+(#)Retrieve the names of employees along with their corresponding department names from the "Employees" and "Departments" tables.
+
+SELECT e.Ename,d.DeptName 
+FROM Employees e,
+Departments d
+WHERE e.DeptId  = d.DeptId ;

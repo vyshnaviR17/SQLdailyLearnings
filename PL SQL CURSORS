@@ -1,0 +1,14 @@
+A CURSOR is a database object which acts as a pointer to a context area.
+CURSOR helps to 
+There are 2 types of cursors.
+1.Implicit cursor
+  -These cursors can't be re used.
+2.Explicit cursor
+  -These cursors can be re used
+There 4 CURSOR attributes associated with implicit and explicit cursor
+They are: -> ROWCOUNT
+          -> ISOPEN
+          -> FOUND
+          -> NOTFOUND
+
+to be continued...
